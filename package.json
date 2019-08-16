@@ -1,0 +1,20 @@
+{
+  "name": "twbot",
+  "version": "1.0.0",
+  "description": "tw bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bot",
+    "tw"
+  ],
+  "author": "@pablito_ernesto",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv": "^8.0.0",
+    "eslint": "^6.1.0",
+    "twit": "^2.2.11"
+  }
+}
