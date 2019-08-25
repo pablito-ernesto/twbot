@@ -1,12 +1,13 @@
+require('dotenv').config()
 var mysql      = require('mysql');
 
 class MySQLHelper{
         constructor(){
             this.connection = mysql.createConnection({
-                host     : 'localhost',
-                user     : 'root',
-                password : 'buCYKS2?Xec;{mMnNE!~FaA^',
-                database : 'simpsons'
+                host     : process.env.DB_HOST,
+                user     : process.env.DB_USER,
+                password : process.env.DB_PASS,
+                database : process.env.DB_NAME
             });
             this.resutl = "";
         }
