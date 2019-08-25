@@ -1,4 +1,5 @@
-require('dotenv').config()
+const dotenv = require('dotenv');
+dotenv.config({ path: __dirname + '/../.env' });
 var Twit = require('twit')
 
 class TwitterHelper{
