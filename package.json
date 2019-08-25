@@ -16,5 +16,8 @@
     "dotenv": "^8.0.0",
     "eslint": "^6.1.0",
     "twit": "^2.2.11"
+  },
+  "dependencies": {
+    "mysql": "^2.17.1"
   }
 }

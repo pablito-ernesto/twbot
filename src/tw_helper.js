@@ -1,18 +1,39 @@
 require('dotenv').config()
 var Twit = require('twit')
 
-function TwitterHelper(){
-    var T = new Twit({
-        consumer_key:         process.env.CONSUMER_KEY,
-        consumer_secret:      process.env.CONSUMER_SECRET,
-        access_token:         process.env.ACCESS_TOKEN,
-        access_token_secret:  process.env.ACCESS_TOKEN_SECRET,
-        timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
-        strictSSL:            true,     // optional - requires SSL certificates to be valid.
+class TwitterHelper{
+
+    constructor(){
+        this.T = new Twit({
+            consumer_key:         process.env.CONSUMER_KEY,
+            consumer_secret:      process.env.CONSUMER_SECRET,
+            access_token:         process.env.ACCESS_TOKEN,
+            access_token_secret:  process.env.ACCESS_TOKEN_SECRET,
+            timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
+            strictSSL:            true,     // optional - requires SSL certificates to be valid.
+        })
+    }
+
+}
+
+TwitterHelper.prototype.createTweet = function (text) {
+    this.T.post('statuses/update', { status: text }, function(err, data, response) {
+        console.log(data)
     })
 }
-TwitterHelper.prototype.createTweet = function (text) {
-    T.post('statuses/update', { status: text }, function(err, data, response) {
+
+TwitterHelper.prototype.createTweet2 = function( text) {
+    return new Promise( ( resolve, reject ) => {
+        this.T.post('statuses/update', { status: text }, function(err, data, response) {
+            if ( err )
+                return reject( err );
+            resolve( data );
+        } );
+    } );
+}
+
+TwitterHelper.prototype.replyTweet = function (id, text) {
+    this.T.post('statuses/update', { in_reply_to_status_id: id, status: text  }, function(err, data, response) {
         console.log(data)
     })
 }
@@ -57,4 +78,4 @@ function promiseExample()
         })
 }
 
-module.export.TwitterHelper = TwitterHelper
+exports.TwitterHelper = TwitterHelper
