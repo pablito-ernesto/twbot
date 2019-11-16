@@ -17,13 +17,7 @@ class TwitterHelper{
 
 }
 
-TwitterHelper.prototype.createTweet = function (text) {
-    this.T.post('statuses/update', { status: text }, function(err, data, response) {
-        console.log(data)
-    })
-}
-
-TwitterHelper.prototype.createTweet2 = function( text) {
+TwitterHelper.prototype.createTweet = function( text) {
     return new Promise( ( resolve, reject ) => {
         this.T.post('statuses/update', { status: text }, function(err, data, response) {
             if ( err )

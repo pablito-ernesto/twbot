@@ -14,10 +14,9 @@ let query ="SELECT  e.title as title, e.season as season, e.number_in_season ,sl
 mySQLHelper.query(query).then(rows => {
     let homer_said = rows[0].spoken_words;
     let episode = "Season: " + rows[0].season + "\nEpisode: " + rows[0].number_in_season
-    twHelper.createTweet2(homer_said).then(data =>{
+    twHelper.createTweet(homer_said).then(data =>{
         twHelper.replyTweet(data.id_str,episode)
         }
     )
     //agregar captura de pantalla
 })
-
