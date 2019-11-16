@@ -1,6 +1,6 @@
 # twbot
 
-Just a tw bot.
+Just a tw bot. https://twitter.com/homer_said
 
 ## Getting Started
 ### TODO
